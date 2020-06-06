@@ -194,7 +194,7 @@ module Jekyll
     private
 
     def copy_file(dest_path)
-      if @site.safe || Jekyll.env == "production"
+      if @site.safe || Jekyll.env == "production" || @site.config["deep_copy"]
         FileUtils.cp(path, dest_path)
       else
         FileUtils.copy_entry(path, dest_path)
